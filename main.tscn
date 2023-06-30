@@ -1,0 +1,179 @@
+[gd_scene load_steps=28 format=3 uid="uid://ukaxy8fiybon"]
+
+[ext_resource type="PackedScene" uid="uid://d03fsllumw514" path="res://assets/import/camp/GEO_Campfire.glb" id="2_yf8gx"]
+[ext_resource type="PackedScene" uid="uid://bu4l8c72tfynb" path="res://assets/import/camp/GEO_Tent.glb" id="3_uf18w"]
+[ext_resource type="Script" path="res://addons/proton_scatter/src/scatter.gd" id="4_cn6fl"]
+[ext_resource type="Script" path="res://addons/proton_scatter/src/stack/modifier_stack.gd" id="5_jmbli"]
+[ext_resource type="PackedScene" uid="uid://4bay3fqgxp0w" path="res://assets/import/camp/GEO_Path_Camp.glb" id="5_xsnr5"]
+[ext_resource type="Script" path="res://addons/proton_scatter/src/modifiers/create_inside_random.gd" id="6_a5scm"]
+[ext_resource type="Script" path="res://addons/proton_scatter/src/modifiers/randomize_transforms.gd" id="7_ddqes"]
+[ext_resource type="Script" path="res://addons/proton_scatter/src/modifiers/relax.gd" id="8_ewbak"]
+[ext_resource type="Script" path="res://addons/proton_scatter/src/modifiers/project_on_geometry.gd" id="9_2y30p"]
+[ext_resource type="Script" path="res://addons/proton_scatter/src/scatter_item.gd" id="10_geag1"]
+[ext_resource type="Script" path="res://addons/proton_scatter/src/scatter_shape.gd" id="11_6wfun"]
+[ext_resource type="Script" path="res://addons/proton_scatter/src/shapes/box_shape.gd" id="12_mhntu"]
+[ext_resource type="Script" path="res://addons/proton_scatter/src/shapes/sphere_shape.gd" id="13_qwhs4"]
+[ext_resource type="Script" path="res://addons/proton_scatter/src/shapes/path_shape.gd" id="14_0sbih"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_1co4y"]
+sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+
+[sub_resource type="Sky" id="Sky_obm8v"]
+sky_material = SubResource("ProceduralSkyMaterial_1co4y")
+
+[sub_resource type="Environment" id="Environment_a7i05"]
+background_mode = 2
+sky = SubResource("Sky_obm8v")
+ambient_light_source = 2
+ambient_light_color = Color(0.94902, 0.807843, 0.341176, 1)
+ambient_light_energy = 0.35
+tonemap_mode = 2
+glow_enabled = true
+glow_normalized = true
+fog_density = 0.001
+fog_sky_affect = 0.565
+adjustment_enabled = true
+adjustment_contrast = 1.24
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_85fjj"]
+albedo_color = Color(0.180392, 0.133333, 0.0901961, 1)
+
+[sub_resource type="Resource" id="Resource_6lxec"]
+script = ExtResource("6_a5scm")
+amount = 1000
+enabled = true
+override_global_seed = true
+custom_seed = 4
+restrict_height = true
+reference_frame = 1
+
+[sub_resource type="Resource" id="Resource_3n45l"]
+script = ExtResource("7_ddqes")
+position = Vector3(0, 0, 0)
+rotation = Vector3(1, 360, 1)
+scale = Vector3(0.5, 0.5, 0.5)
+enabled = true
+override_global_seed = false
+custom_seed = 0
+restrict_height = false
+reference_frame = 2
+
+[sub_resource type="Resource" id="Resource_gxc3s"]
+script = ExtResource("8_ewbak")
+iterations = 3
+offset_step = 0.2
+consecutive_step_multiplier = 0.75
+enabled = true
+override_global_seed = false
+custom_seed = 0
+restrict_height = true
+reference_frame = 0
+
+[sub_resource type="Resource" id="Resource_nn7pf"]
+script = ExtResource("9_2y30p")
+ray_direction = Vector3(0, -1, 0)
+ray_length = 5.0
+ray_offset = 5.0
+remove_points_on_miss = false
+align_with_collision_normal = false
+max_slope = 90.0
+collision_mask = 1
+enabled = true
+override_global_seed = false
+custom_seed = 0
+restrict_height = false
+reference_frame = 0
+
+[sub_resource type="Resource" id="Resource_w068m"]
+script = ExtResource("5_jmbli")
+stack = Array[Resource]([SubResource("Resource_6lxec"), SubResource("Resource_3n45l"), SubResource("Resource_gxc3s"), SubResource("Resource_nn7pf")])
+
+[sub_resource type="Resource" id="Resource_w3m12"]
+script = ExtResource("12_mhntu")
+size = Vector3(41.9222, 1, 46.2431)
+
+[sub_resource type="Resource" id="Resource_xsuea"]
+script = ExtResource("13_qwhs4")
+radius = 5.26882
+
+[sub_resource type="Curve3D" id="Curve3D_gs5p6"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0.301742, 3.48091e-05, 4.92684, 0, 0, 0, 0, 0, 0, 0.024772, 3.48091e-05, 11.6665, 0, 0, 0, 0, 0, 0, -0.944634, 3.48091e-05, 16.0981, 0, 0, 0, 0, 0, 0, -3.39122, 3.48091e-05, 19.8372, 0, 0, 0, 0, 0, 0, -10.0386, 3.48091e-05, 24.0841, 0, 0, 0, 0, 0, 0, -14.5163, 3.48091e-05, 24.6381, 0, 0, 0, 0, 0, 0, -17.9785, 3.48091e-05, 27.5463, 0, 0, 0, 0, 0, 0, -19.5941, 3.48091e-05, 31.0546, 0, 0, 0, 0, 0, 0, -19.9634, 3.48091e-05, 34.7476, 0, 0, 0, 0, 0, 0, -19.9634, 3.48091e-05, 36.5479),
+"tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+}
+point_count = 11
+
+[sub_resource type="Resource" id="Resource_mxsn8"]
+script = ExtResource("14_0sbih")
+closed = false
+thickness = 2.5
+curve = SubResource("Curve3D_gs5p6")
+
+[node name="World" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_a7i05")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.709037, -0.582961, -0.396766, -0.5522, 0.109073, 0.826546, -0.438567, 0.805146, -0.399248, 0, 0, 0)
+light_color = Color(1, 1, 0.831373, 1)
+shadow_enabled = true
+
+[node name="Camp" type="Node3D" parent="."]
+
+[node name="GEO_Campfire" parent="Camp" instance=ExtResource("2_yf8gx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2.03682)
+
+[node name="GEO_Tent" parent="Camp" instance=ExtResource("3_uf18w")]
+transform = Transform3D(-0.380167, 0, -0.924918, 0, 1, 0, 0.924918, 0, -0.380167, -1.933, 0, -1.709)
+
+[node name="CSG_Camp_Floor" type="CSGBox3D" parent="Camp"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.25, 40)
+material_override = SubResource("StandardMaterial3D_85fjj")
+size = Vector3(100, 0.5, 100)
+
+[node name="GEO_Path_Camp" parent="." instance=ExtResource("5_xsnr5")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0.0103374, 0)
+
+[node name="Vegetation" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00278091, -0.0087018, -0.0925636)
+
+[node name="ProtonScatter" type="Node3D" parent="Vegetation"]
+script = ExtResource("4_cn6fl")
+modifier_stack = SubResource("Resource_w068m")
+
+[node name="ScatterItem" type="Node3D" parent="Vegetation/ProtonScatter"]
+script = ExtResource("10_geag1")
+path = "res://assets/import/camp/GEO_Tree_000.glb"
+
+[node name="ScatterItem2" type="Node3D" parent="Vegetation/ProtonScatter"]
+script = ExtResource("10_geag1")
+proportion = 200
+path = "res://assets/import/camp/GEO_Bush_000.glb"
+
+[node name="ScatterShape" type="Node3D" parent="Vegetation/ProtonScatter"]
+transform = Transform3D(1, 0, -2.98023e-08, 0, 1, 0, 2.98023e-08, 0, 1, -10.0462, 0, 13.551)
+visible = false
+script = ExtResource("11_6wfun")
+shape = SubResource("Resource_w3m12")
+
+[node name="ScatterShape2" type="Node3D" parent="Vegetation/ProtonScatter"]
+transform = Transform3D(1, 0, -2.98023e-08, 0, 1, 0, 2.98023e-08, 0, 1, -0.0960617, 0, -0.553739)
+visible = false
+script = ExtResource("11_6wfun")
+negative = true
+shape = SubResource("Resource_xsuea")
+
+[node name="ScatterShape3" type="Node3D" parent="Vegetation/ProtonScatter"]
+transform = Transform3D(1, 0, -2.98023e-08, 0, 1, 0, 2.98023e-08, 0, 1, -0.0960617, 0, -0.553739)
+visible = false
+script = ExtResource("11_6wfun")
+negative = true
+shape = SubResource("Resource_mxsn8")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(-0.5, -0.612372, 0.612372, 0, 0.707107, 0.707107, -0.866025, 0.353553, -0.353553, 9.742, 14.517, -5)
+projection = 1
+size = 18.0
+near = 0.001
