@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://bd8yac0v2x7ou"]
+
+[ext_resource type="PackedScene" uid="uid://crnv5c7rmsr4d" path="res://assets/import/camp/GEO_Stone_000.glb" id="1_1vqu7"]
+
+[node name="GEO_Stone_000" instance=ExtResource("1_1vqu7")]
+
+[node name="GEOStone000" parent="." index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0135047, 0)

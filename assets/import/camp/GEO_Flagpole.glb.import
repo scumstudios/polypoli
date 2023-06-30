@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://4bay3fqgxp0w"
-path="res://.godot/imported/GEO_Path_Camp.glb-18bac4ee81f357996c37f468065d7c7e.scn"
+uid="uid://bop01gkca6uw6"
+path="res://.godot/imported/GEO_Flagpole.glb-29d5f7fc2ff926fb3c8f30b135b4e685.scn"
 
 [deps]
 
-source_file="res://assets/import/camp/GEO_Path_Camp.glb"
-dest_files=["res://.godot/imported/GEO_Path_Camp.glb-18bac4ee81f357996c37f468065d7c7e.scn"]
+source_file="res://assets/import/camp/GEO_Flagpole.glb"
+dest_files=["res://.godot/imported/GEO_Flagpole.glb-29d5f7fc2ff926fb3c8f30b135b4e685.scn"]
 
 [params]
 

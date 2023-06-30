@@ -1,6 +1,7 @@
-[gd_scene load_steps=28 format=3 uid="uid://ukaxy8fiybon"]
+[gd_scene load_steps=36 format=3 uid="uid://ukaxy8fiybon"]
 
 [ext_resource type="PackedScene" uid="uid://d03fsllumw514" path="res://assets/import/camp/GEO_Campfire.glb" id="2_yf8gx"]
+[ext_resource type="Material" uid="uid://bl122ebfc8y13" path="res://assets/materials/ground.tres" id="3_54qcv"]
 [ext_resource type="PackedScene" uid="uid://bu4l8c72tfynb" path="res://assets/import/camp/GEO_Tent.glb" id="3_uf18w"]
 [ext_resource type="Script" path="res://addons/proton_scatter/src/scatter.gd" id="4_cn6fl"]
 [ext_resource type="Script" path="res://addons/proton_scatter/src/stack/modifier_stack.gd" id="5_jmbli"]
@@ -14,6 +15,7 @@
 [ext_resource type="Script" path="res://addons/proton_scatter/src/shapes/box_shape.gd" id="12_mhntu"]
 [ext_resource type="Script" path="res://addons/proton_scatter/src/shapes/sphere_shape.gd" id="13_qwhs4"]
 [ext_resource type="Script" path="res://addons/proton_scatter/src/shapes/path_shape.gd" id="14_0sbih"]
+[ext_resource type="PackedScene" uid="uid://bop01gkca6uw6" path="res://assets/import/camp/GEO_Flagpole.glb" id="16_6q3gf"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_1co4y"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -36,19 +38,16 @@ fog_sky_affect = 0.565
 adjustment_enabled = true
 adjustment_contrast = 1.24
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_85fjj"]
-albedo_color = Color(0.180392, 0.133333, 0.0901961, 1)
-
-[sub_resource type="Resource" id="Resource_6lxec"]
+[sub_resource type="Resource" id="Resource_pm8xc"]
 script = ExtResource("6_a5scm")
 amount = 1000
 enabled = true
 override_global_seed = true
-custom_seed = 4
+custom_seed = 15
 restrict_height = true
 reference_frame = 1
 
-[sub_resource type="Resource" id="Resource_3n45l"]
+[sub_resource type="Resource" id="Resource_ixbj4"]
 script = ExtResource("7_ddqes")
 position = Vector3(0, 0, 0)
 rotation = Vector3(1, 360, 1)
@@ -59,7 +58,7 @@ custom_seed = 0
 restrict_height = false
 reference_frame = 2
 
-[sub_resource type="Resource" id="Resource_gxc3s"]
+[sub_resource type="Resource" id="Resource_5a53e"]
 script = ExtResource("8_ewbak")
 iterations = 3
 offset_step = 0.2
@@ -70,7 +69,7 @@ custom_seed = 0
 restrict_height = true
 reference_frame = 0
 
-[sub_resource type="Resource" id="Resource_nn7pf"]
+[sub_resource type="Resource" id="Resource_vq566"]
 script = ExtResource("9_2y30p")
 ray_direction = Vector3(0, -1, 0)
 ray_length = 5.0
@@ -85,13 +84,13 @@ custom_seed = 0
 restrict_height = false
 reference_frame = 0
 
-[sub_resource type="Resource" id="Resource_w068m"]
+[sub_resource type="Resource" id="Resource_63m1g"]
 script = ExtResource("5_jmbli")
-stack = Array[Resource]([SubResource("Resource_6lxec"), SubResource("Resource_3n45l"), SubResource("Resource_gxc3s"), SubResource("Resource_nn7pf")])
+stack = Array[Resource]([SubResource("Resource_pm8xc"), SubResource("Resource_ixbj4"), SubResource("Resource_5a53e"), SubResource("Resource_vq566")])
 
 [sub_resource type="Resource" id="Resource_w3m12"]
 script = ExtResource("12_mhntu")
-size = Vector3(41.9222, 1, 46.2431)
+size = Vector3(41.9222, 1, 61.8678)
 
 [sub_resource type="Resource" id="Resource_xsuea"]
 script = ExtResource("13_qwhs4")
@@ -110,6 +109,69 @@ closed = false
 thickness = 2.5
 curve = SubResource("Curve3D_gs5p6")
 
+[sub_resource type="Resource" id="Resource_dlk5f"]
+script = ExtResource("6_a5scm")
+amount = 500
+enabled = true
+override_global_seed = true
+custom_seed = 4
+restrict_height = true
+reference_frame = 1
+
+[sub_resource type="Resource" id="Resource_3hnwy"]
+script = ExtResource("7_ddqes")
+position = Vector3(0, 0, 0)
+rotation = Vector3(0, 360, 0)
+scale = Vector3(0.33, 2, 0.33)
+enabled = true
+override_global_seed = false
+custom_seed = 0
+restrict_height = false
+reference_frame = 2
+
+[sub_resource type="Resource" id="Resource_c7kjb"]
+script = ExtResource("8_ewbak")
+iterations = 3
+offset_step = 0.2
+consecutive_step_multiplier = 0.75
+enabled = false
+override_global_seed = false
+custom_seed = 0
+restrict_height = true
+reference_frame = 0
+
+[sub_resource type="Resource" id="Resource_7x0r2"]
+script = ExtResource("9_2y30p")
+ray_direction = Vector3(0, -1, 0)
+ray_length = 5.0
+ray_offset = 5.0
+remove_points_on_miss = false
+align_with_collision_normal = false
+max_slope = 90.0
+collision_mask = 1
+enabled = true
+override_global_seed = false
+custom_seed = 0
+restrict_height = false
+reference_frame = 0
+
+[sub_resource type="Resource" id="Resource_oughs"]
+script = ExtResource("5_jmbli")
+stack = Array[Resource]([SubResource("Resource_dlk5f"), SubResource("Resource_3hnwy"), SubResource("Resource_c7kjb"), SubResource("Resource_7x0r2")])
+
+[sub_resource type="Curve3D" id="Curve3D_orjy7"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0.146809, 3.48082e-05, 4.45032, 0, 0, 0, 0, 0, 0, -0.00537454, 3.48082e-05, 12.7987, 0, 0, 0, 0, 0, 0, -2.15037, 3.48082e-05, 18.7013, 0, 0, 0, 0, 0, 0, -5.42402, 3.48082e-05, 21.8317, 0, 0, 0, 0, 0, 0, -8.33725, 3.48082e-05, 23.484, 0, 0, 0, 0, 0, 0, -12.8375, 3.48082e-05, 24.3971, 0, 0, 0, 0, 0, 0, -17.2291, 3.48082e-05, 26.419, 0, 0, 0, 0, 0, 0, -19.6423, 3.48082e-05, 30.4845, 0, 0, 0, 0, 0, 0, -20.005, 3.48082e-05, 32.7501, 0, 0, 0, 0, 0, 0, -19.9616, 3.48082e-05, 36.8373),
+"tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+}
+point_count = 10
+
+[sub_resource type="Resource" id="Resource_elxxt"]
+script = ExtResource("14_0sbih")
+closed = false
+thickness = 1.0
+curve = SubResource("Curve3D_orjy7")
+
 [node name="World" type="Node3D"]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
@@ -119,6 +181,7 @@ environment = SubResource("Environment_a7i05")
 transform = Transform3D(-0.709037, -0.582961, -0.396766, -0.5522, 0.109073, 0.826546, -0.438567, 0.805146, -0.399248, 0, 0, 0)
 light_color = Color(1, 1, 0.831373, 1)
 shadow_enabled = true
+shadow_blur = 0.5
 
 [node name="Camp" type="Node3D" parent="."]
 
@@ -130,50 +193,72 @@ transform = Transform3D(-0.380167, 0, -0.924918, 0, 1, 0, 0.924918, 0, -0.380167
 
 [node name="CSG_Camp_Floor" type="CSGBox3D" parent="Camp"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.25, 40)
-material_override = SubResource("StandardMaterial3D_85fjj")
-size = Vector3(100, 0.5, 100)
+material_override = ExtResource("3_54qcv")
+size = Vector3(100, 0.5, 139.025)
 
 [node name="GEO_Path_Camp" parent="." instance=ExtResource("5_xsnr5")]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0.0103374, 0)
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0.00322531, 0)
 
-[node name="Vegetation" type="Node3D" parent="."]
+[node name="VegetationScatter" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00278091, -0.0087018, -0.0925636)
 
-[node name="ProtonScatter" type="Node3D" parent="Vegetation"]
+[node name="PRC_Trees" type="Node3D" parent="VegetationScatter"]
 script = ExtResource("4_cn6fl")
-modifier_stack = SubResource("Resource_w068m")
+modifier_stack = SubResource("Resource_63m1g")
 
-[node name="ScatterItem" type="Node3D" parent="Vegetation/ProtonScatter"]
+[node name="SCT_Trees" type="Node3D" parent="VegetationScatter/PRC_Trees"]
+visible = false
 script = ExtResource("10_geag1")
+proportion = 75
 path = "res://assets/import/camp/GEO_Tree_000.glb"
 
-[node name="ScatterItem2" type="Node3D" parent="Vegetation/ProtonScatter"]
+[node name="SCT_Bushes" type="Node3D" parent="VegetationScatter/PRC_Trees"]
+visible = false
 script = ExtResource("10_geag1")
 proportion = 200
 path = "res://assets/import/camp/GEO_Bush_000.glb"
 
-[node name="ScatterShape" type="Node3D" parent="Vegetation/ProtonScatter"]
-transform = Transform3D(1, 0, -2.98023e-08, 0, 1, 0, 2.98023e-08, 0, 1, -10.0462, 0, 13.551)
+[node name="ScatterShape" type="Node3D" parent="VegetationScatter/PRC_Trees"]
+transform = Transform3D(1, 0, -2.98023e-08, 0, 1, 0, 2.98023e-08, 0, 1, -9.54969, 0, 9.55574)
 visible = false
 script = ExtResource("11_6wfun")
 shape = SubResource("Resource_w3m12")
 
-[node name="ScatterShape2" type="Node3D" parent="Vegetation/ProtonScatter"]
+[node name="ScatterShape2" type="Node3D" parent="VegetationScatter/PRC_Trees"]
 transform = Transform3D(1, 0, -2.98023e-08, 0, 1, 0, 2.98023e-08, 0, 1, -0.0960617, 0, -0.553739)
 visible = false
 script = ExtResource("11_6wfun")
 negative = true
 shape = SubResource("Resource_xsuea")
 
-[node name="ScatterShape3" type="Node3D" parent="Vegetation/ProtonScatter"]
+[node name="ScatterShape3" type="Node3D" parent="VegetationScatter/PRC_Trees"]
 transform = Transform3D(1, 0, -2.98023e-08, 0, 1, 0, 2.98023e-08, 0, 1, -0.0960617, 0, -0.553739)
 visible = false
 script = ExtResource("11_6wfun")
 negative = true
 shape = SubResource("Resource_mxsn8")
 
+[node name="PRC_Path_Rocks" type="Node3D" parent="VegetationScatter"]
+script = ExtResource("4_cn6fl")
+modifier_stack = SubResource("Resource_oughs")
+
+[node name="ScatterItem" type="Node3D" parent="VegetationScatter/PRC_Path_Rocks"]
+visible = false
+script = ExtResource("10_geag1")
+source_scale_multiplier = 0.25
+path = "res://assets/vegetation/geo_stone_000.tscn"
+
+[node name="ScatterShape4" type="Node3D" parent="VegetationScatter/PRC_Path_Rocks"]
+transform = Transform3D(1, 0, -2.98023e-08, 0, 1, 0, 2.98023e-08, 0, 1, -0.0960617, 0, -0.553739)
+script = ExtResource("11_6wfun")
+shape = SubResource("Resource_elxxt")
+
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(-0.5, -0.612372, 0.612372, 0, 0.707107, 0.707107, -0.866025, 0.353553, -0.353553, 9.742, 14.517, -5)
+visible = false
 projection = 1
 size = 18.0
 near = 0.001
+
+[node name="GEO_Flagpole" parent="." instance=ExtResource("16_6q3gf")]
+transform = Transform3D(-0.293874, 0, 0.955844, 0, 1, 0, -0.955844, 0, -0.293874, -2.19388, 0, 0.374934)
